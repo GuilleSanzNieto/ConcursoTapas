@@ -45,11 +45,18 @@ export default function GestionTapasPage({ session, onComplete }) {
                 equipo_id: session.equipo_id,
             }));
 
+            console.log('Intentando insertar tapas:', tapasToInsert);
+            console.log('Session data:', session);
+
             await db.createTapas(tapasToInsert);
             onComplete();
         } catch (error) {
             console.error('Error creating tapas:', error);
-            alert('Error al registrar las tapas. Por favor intenta de nuevo.');
+            console.error('Error details:', error.message, error.details, error.hint);
+
+            // Mostrar el error específico si está disponible
+            const errorMessage = error.message || 'Error al registrar las tapas';
+            alert(`Error: ${errorMessage}\n\nPor favor revisa la consola para más detalles.`);
         } finally {
             setSubmitting(false);
         }

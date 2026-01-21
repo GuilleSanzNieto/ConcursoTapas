@@ -78,6 +78,17 @@ export default function EsperaPage({ onAllReady }) {
                                     </div>
                                 ))}
                             </div>
+
+                            {/* Manual button to proceed */}
+                            <button
+                                onClick={onAllReady}
+                                className="btn-primary w-full mt-4"
+                            >
+                                Ver Resultados Ahora
+                            </button>
+                            <p className="text-xs text-white/40 text-center mt-2">
+                                O espera a que todos terminen
+                            </p>
                         </div>
                     </div>
                 )}
