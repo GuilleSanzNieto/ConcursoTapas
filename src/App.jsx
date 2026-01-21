@@ -1,21 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useSession } from './hooks/useSession';
-import { supabase } from './lib/supabase';
 import RegistroPage from './pages/RegistroPage';
 import GestionTapasPage from './pages/GestionTapasPage';
 import VotacionPage from './pages/VotacionPage';
 import EsperaPage from './pages/EsperaPage';
 import ResultadosPage from './pages/ResultadosPage';
-import SupabaseSetupWarning from './components/SupabaseSetupWarning';
 
 function App() {
   const { session, loading, saveSession } = useSession();
   const [currentScreen, setCurrentScreen] = useState('registro');
-
-  // Check if Supabase is configured
-  if (!supabase) {
-    return <SupabaseSetupWarning />;
-  }
 
   useEffect(() => {
     // Determine which screen to show based on session
